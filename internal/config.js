@@ -1,6 +1,6 @@
 class Config {
   constructor(config) {
-    const _host = config.host || process.env.DETA_BASE_HOST || 'database.deta.sh/v1';
+    const _host = config.host || process.env.DETA_BASE_HOST || 'database.deta.sh';
 
     const _authType = config.authType;
 
