@@ -1,6 +1,6 @@
-const fetchModule = require("../fetch");
+
 const https = require("https");
-const { FetchError } = require("node-fetch");
+
 const { resolve } = require("path");
 const { rejects } = require("assert");
 
@@ -53,38 +53,7 @@ class BaseService {
   }
 
   async request(route, payload, method = 'GET') {
-    // const { fetch: _fetch } = fetchModule;
 
-    // const request = {
-    //   method,
-    //   headers: this.headers,
-    // };
-
-    // if (method !== 'GET') request['body'] = JSON.stringify(payload);
-    // request['agent'] = this._agent;
-
-    // console.log('base url:', this._baseURL);
-    // console.log('route:', route);
-
-    // var response = {};
-    // try {
-    //   response = await _fetch(`${this._baseURL}${route}`, request);
-    // } catch (e){
-    //   // retry on fetchError
-    //   if (e instanceof FetchError){
-    //     response = await _fetch(`${this._baseURL}${route}`, request);
-    //   } else{
-    //     throw e
-    //   }
-    // }
-    
-    // const status = response.status;
-    // if (status === 401){
-    //   throw new Error("Unauthorized");
-    // }
-
-    // const data = await response.json();
-    // return { status, response: data };
     const options = {
       method,
       hostname: this._host,
