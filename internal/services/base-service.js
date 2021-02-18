@@ -91,15 +91,15 @@ class BaseService {
       path: `${this._baseRoute}${route}`,
       headers: this.headers,
     };
-
-    if (method !== 'GET') options['body'] = JSON.stringify(payload);
+    let data = {};
+    if (method !== 'GET') data = JSON.stringify(payload);
     options['agent'] = this._agent;
-    const response = await this.doRequest(options);
+    const response = await this.doRequest(options, data);
     return response;
 
   }
 
-  doRequest(options) {
+  doRequest(options, data) {
     return new Promise((resolve, reject) => {
       const req = https.request(options, (res) => {
         res.setEncoding('utf8');
@@ -118,7 +118,9 @@ class BaseService {
       req.on('error', (err) => {
         reject(err);
       });
-  
+      if (options['method'] !== 'GET') {
+        req.write(data);
+      }
       req.end();
   });
   }

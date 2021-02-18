@@ -88,7 +88,7 @@ class Base extends BaseService {
       },
       'PUT'
     );
-    console.log(response);
+
     return response && status === 207
       ? response['processed']['items'][0]
       : null;
